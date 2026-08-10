@@ -2,6 +2,11 @@ pipeline {
 
     agent any
 
+    environment {
+        BOT_TOKEN = credentials('telegram-bot-token')
+        CHAT_ID = credentials('telegram-chat-id')
+    }
+
     stages {
 
         stage('Python Environment') {
@@ -26,7 +31,15 @@ pipeline {
                     set PYTHONPATH=%WORKSPACE%
                     set PYTHONIOENCODING=utf-8
                     set PYTHONUTF8=1
+
+                    (
+                        echo BOT_TOKEN = "%BOT_TOKEN%"
+                        echo CHAT_ID = "%CHAT_ID%"
+                    ) > config\\secrets.py
+
                     .jenkins-venv\\Scripts\\python.exe scripts\\run_daily_pipeline.py
+
+                    del /q config\\secrets.py
                 '''
             }
         }
