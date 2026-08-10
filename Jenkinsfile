@@ -4,12 +4,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Python Environment') {
             steps {
                 bat '"C:\\Users\\gunna\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m venv .jenkins-venv'
