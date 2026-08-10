@@ -1,0 +1,7 @@
+{
+    "algorithm": "RandomForestClassifier",
+    "accuracy": 0.5244,
+    "trained_on": "2026-07-26",
+    "records": 820,
+    "features": 8
+}
