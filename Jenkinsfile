@@ -34,7 +34,7 @@ pipeline {
 
                     (
                         echo BOT_TOKEN = "%BOT_TOKEN%"
-                        echo CHAT_ID = %CHAT_ID%
+                        echo CHAT_ID = "%CHAT_ID%""
                     ) > config\\secrets.py
 
                     .jenkins-venv\\Scripts\\python.exe scripts\\run_daily_pipeline.py
