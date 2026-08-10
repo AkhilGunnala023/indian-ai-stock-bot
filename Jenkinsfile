@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run AI Stock Bot') {
             steps {
-                bat '.jenkins-venv\\Scripts\\python.exe scripts\\run_daily_pipeline.py'
+                bat 'set PYTHONPATH=%WORKSPACE% && .jenkins-venv\\Scripts\\python.exe scripts\\run_daily_pipeline.py'
             }
         }
     }
