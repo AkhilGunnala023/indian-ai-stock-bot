@@ -12,7 +12,7 @@ pipeline {
 
         stage('Python Environment') {
             steps {
-                bat 'py -3.14 -m venv .jenkins-venv'
+                bat '"C:\\Users\\gunna\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" -m venv .jenkins-venv'
                 bat '.jenkins-venv\\Scripts\\python.exe -m pip install --upgrade pip'
                 bat '.jenkins-venv\\Scripts\\python.exe -m pip install -r requirements.txt'
             }
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Environment Test') {
             steps {
-                bat 'java -version'
+                bat '"C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.4.7-hotspot\\bin\\java.exe" -version'
                 bat '.jenkins-venv\\Scripts\\python.exe --version'
                 bat '.jenkins-venv\\Scripts\\python.exe -c "import pandas, yfinance, xgboost, sklearn, joblib; print(\'AI BOT DEPENDENCIES OK\')"'
             }
