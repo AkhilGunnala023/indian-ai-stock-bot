@@ -34,10 +34,15 @@ pipeline {
 
                     (
                         echo BOT_TOKEN = "%BOT_TOKEN%"
-                        echo CHAT_ID = "%CHAT_ID%""
+                        echo CHAT_ID = "%CHAT_ID%"
                     ) > config\\secrets.py
 
                     .jenkins-venv\\Scripts\\python.exe scripts\\run_daily_pipeline.py
+                    if errorlevel 1 (
+                        echo AI Stock Bot failed.
+                        del /q config\\secrets.py
+                        exit /b 1
+                    )
 
                     del /q config\\secrets.py
                 '''
@@ -48,11 +53,11 @@ pipeline {
     post {
 
         success {
-            echo 'GitHub + Jenkins environment setup successful'
+            echo 'AI Stock Bot pipeline completed successfully'
         }
 
         failure {
-            echo 'GitHub + Jenkins setup failed'
+            echo 'AI Stock Bot pipeline failed'
         }
     }
 }
