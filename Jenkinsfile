@@ -19,6 +19,12 @@ pipeline {
                 bat '.jenkins-venv\\Scripts\\python.exe -c "import pandas, yfinance, xgboost, sklearn, joblib; print(\'AI BOT DEPENDENCIES OK\')"'
             }
         }
+
+        stage('Run AI Stock Bot') {
+            steps {
+                bat '.jenkins-venv\\Scripts\\python.exe scripts\\run_daily_pipeline.py'
+            }
+        }
     }
 
     post {
